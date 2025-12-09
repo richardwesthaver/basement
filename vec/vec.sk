@@ -1,0 +1,13 @@
+;;; vec -*- mode:skel; -*-
+:name "vec"
+:author ("Richard Westhaver" . "ellis@rwest.io")
+:description "A fork of CL-Vectors, repurposed for the Cursed Lisp environment."
+:version "1.0.0"
+:license "MIT"
+:tags ("vector" "polygon" "draw" "math")
+:vc (:hg "https://vc.compiler.company/shed/vec"
+     (upstream (:git "https://github.com/fjolliton/cl-vectors"))
+     (gh (:git "ssh://git@github.com/richardwesthaver/vec"))
+     (cb (:git "ssh://git@codeberg.org/c-c/vec")))
+:stash ".stash"
+:cache ".stash/cache"
