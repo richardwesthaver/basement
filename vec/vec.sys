@@ -1,7 +1,0 @@
-;;; vec.sys --- Vec Sytem Definitions
-(defsys :vec
- :require (:std :log)
- :components ((:file "pkg"))
- :provide ((:sys :aa)
-           (:sys :path
-            :provide ((:sys :ttf)))))
