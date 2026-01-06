@@ -15,7 +15,7 @@
   :perform (test-op (o c) (symbol-call :rt :do-tests :web)))
 
 (defsystem :web/index
-  :depends-on (:cl-ppcre :std :rdb :organ)
+  :depends-on (:ppcre :std :rdb :organ)
   :components ((:file "index"))
   :in-order-to ((test-op (test-op "web/tests")))
   :build-operation "program-op"
@@ -23,7 +23,7 @@
   :entry-point "web/index::main")
 
 (defsystem :web/dash
-  :depends-on (:uiop :cl-ppcre :std :rdb :parenscript :lass :spinneret :organ)
+  :depends-on (:uiop :ppcre :std :rdb :parenscript :lass :spinneret :organ)
   :components ((:file "dash"))
   :in-order-to ((test-op (test-op "web/tests")))
   :build-operation "program-op"
