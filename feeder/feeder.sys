@@ -1,0 +1,4 @@
+;;; ~/comp/shed/basement/feeder/feeder.sys --- Feeder Sytem Definitions
+(defsys :feeder
+ :require (:std :log)
+ :components ((:pkg "pkg") (:file "feeder")))
