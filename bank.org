@@ -1,0 +1,136 @@
+#+title: bank
++ 70-20-10 :: spend,invest,save
+* summary
+:PROPERTIES:
+:ID:       c53b1e42-03d9-4aae-984f-a95e9f7eb96e
+:END:
+* accounts
+:PROPERTIES:
+:ID:       9258c953-bd4f-4746-8871-6712db6974f0
+:END:
+** report-on
+:PROPERTIES:
+:ID:       21ff815e-d5a2-48ac-8f4b-1f9bc1cf7c2e
+:END:
+#+begin_src emacs-lisp
+  (ledger-report "account" nil)
+#+end_src
+
+#+RESULTS:
+: q to quit; r to redo; e to edit; s to save; SPC and DEL to scroll
+
+* transactions
+:PROPERTIES:
+:ID:       95d2b4f8-2c5a-479f-bf40-d4fa99400ff4
+:END:
+* income
+:PROPERTIES:
+:ID:       6716b5d8-d5f9-49d8-aa0e-8df599827d36
+:END:
+* expenses
+:PROPERTIES:
+:ID:       91a32d8a-d253-431d-9d45-28ac4a7fc11e
+:END:
+* investments
+:PROPERTIES:
+:ID:       3935b8ca-01ca-4005-a000-d3ce800ff550
+:END:
+* signals
+:PROPERTIES:
+:ID:       0bb71d0a-4bcf-4fbf-9e6e-32188e19e3f5
+:END:
+* reports
+:PROPERTIES:
+:ID:       4f8d7172-6d34-4d90-a2f5-8ae79010ff5a
+:END:
+* tools
+:PROPERTIES:
+:ID:       a6edf210-1d2a-48cc-873c-c9714b52245f
+:END:
+** slime
+:PROPERTIES:
+:ID:       6a00b05c-3cd8-4a62-b607-8a1c2792377f
+:END:
+*** start
+:PROPERTIES:
+:ID:       6f42ed9c-a35f-4650-aebb-49ba86931b2e
+:END:
+Set up a banking development environment with SBCL+slime.
+#+begin_src emacs-lisp :results silent
+      (slime-start :program "sbcl"
+                   :program-args
+                   '("--core" "/usr/local/share/lisp/user.core"
+                     "--eval" "(ql:quickload :cl-ledger)"
+                     "--eval" "(ql:quickload :organ)"
+                     "--eval" "(in-package :user)")
+                   :directory "~"
+                   :buffer "*bank-inferior-lisp*")
+#+end_src
+*** profile
+:PROPERTIES:
+:ID:       5cedab08-9364-4508-98cc-865526b67840
+:END:
+**** enable
+:PROPERTIES:
+:ID:       96c8db13-6b49-4e55-83f6-4ec1055e1704
+:END:
+Enable profiling for bank-related functions.
+#+begin_src emacs-lisp :results output
+  (let ((pkgs '("cl-ledger" "organ")))
+    (mapc
+     (lambda (p)
+       (slime-profile-package p t t))
+     pkgs)
+    (message "profiling packages %S" pkgs))
+#+end_src
+
+#+RESULTS:
+
+**** report
+:PROPERTIES:
+:ID:       70948b13-5421-4e05-8a3d-edcc16dcb63c
+:END:
+Return a report on bank-related functions.
+#+begin_src emacs-lisp :results replace
+  (slime-profile-report)
+  (slime-toggle)
+#+end_src
+
+#+RESULTS:
+: #<buffer *slime-repl sbcl<2>*>
+
+**** reset
+:PROPERTIES:
+:ID:       02c0ff97-4a82-464c-b52f-17f28fcc463e
+:END:
+Reset the slime profiler.
+#+begin_src emacs-lisp :results silent
+  (slime-profile-reset)
+#+end_src
+** vc
+:PROPERTIES:
+:ID:       cbca2cc2-56ef-49e7-a52a-bdacf37c0ace
+:END:
+*** git
+:PROPERTIES:
+:ID:       b8b78d60-9d73-4257-9cd7-ae8b2c517384
+:END:
+**** clone cl-ledger
+:PROPERTIES:
+:ID:       6b45bd30-825e-4f02-8d29-c70d5aa52d08
+:END:
+#+begin_src shell :results output replace :async yes
+cd ~/.stash && git clone https://github.com/ledger/cl-ledger.git
+#+end_src
+
+#+RESULTS:
+
+**** clone cambl
+:PROPERTIES:
+:ID:       09b1b9ef-dfd8-42d9-85ce-33dcb1bd6e84
+:END:
+#+begin_src shell :results output replace :async yes
+cd ~/.stash && git clone https://github.com/jwiegley/cambl.git
+#+end_src
+
+#+RESULTS:
