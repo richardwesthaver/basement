@@ -1,0 +1,10 @@
+* <%@var name%><%@ifnotempty tags%> <%@var tags%><%@endif%>
+:PROPERTIES:
+:LISP_ID: <%@var name%>
+:LISP_CLASS: <%@var class%>
+:END:
+<%@ifnotempty definitions%>
+<%@loop definitions%>
+
+<%@endloop%>
+<%@endif%>

@@ -1,0 +1,31 @@
+* <%@var name%>
+:PROPERTIES:
+<%@ifnotempty summary%>:SUMMARY: <%@var summary%>
+<%@endif%><%@ifnotempty file-description%>
+:DESCRIPTION: <%@var file-description%>
+<%@endif%><%@ifnotempty version%>
+:VERSION: <%@var version%>
+<%@endif%>
+:LOCATION: <%@var location%>
+<%@var description%>
+<%@if info%>
+#+BEGIN: lisp-system-info :system <%@var name%> :level 1
+#+END:
+<%@endif%><%@if commentary%>
+<@var commentary%>
+<%@endif%><%@ifnotempty packages%>
+** Packages
+<%@loop packages%>
+
+<%@endloop%>
+<%@endif%><%@ifnotempty components%>
+** Components
+<%@loop components%>
+
+<%@endloop%>
+<%@endif%><%@ifnotempty provide%>
+** Provides
+<%@loop provide%>
+
+<%@endloop%>
+<%@endif%>

@@ -1,0 +1,12 @@
+* <%@var name%>
+:PROPERTIES:
+:SUMMARY: <%@var summary%>
+:LOCATION: <%@var location%>
+:END:
+<%@var description%>
+<%@var info%>
+<%@if commentary%>
+<%@var commentary%>
+<%@endif%><%@if outline%>
+<%@var outline%>
+<%@endif%>

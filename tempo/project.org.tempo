@@ -1,0 +1,26 @@
+#+TITLE: <%@var name%>
+#+SUBTITLE: <%@var summary%>
+#+VERSION: <%@var version%>
+#+LOCATION: <%@var location%>
+#+AUTHOR: <%@var author%>
+#+EMAIL: <%@var email%>
+#+FILETAGS: <%@var tags%>
+<%@var description%>
+<%@if info%>
+#+BEGIN: project-info
+#+END:
+<%@endif%><%@if readme%>
+<%@var readme%>
+<%@endif%><%@if commentary%>
+<@var commentary%>
+<%@endif%><%@ifnotempty components%>
+* Components
+<%@loop components%>
+
+<%@endloop%>
+<%@endif%><%@ifnotempty rules%>
+* Rules
+<%@loop rules%>
+
+<%@endloop%>
+<%@endif%>
